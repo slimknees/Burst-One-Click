@@ -162,7 +162,7 @@ if [ ! -f $UNZIPDONE ]
 
 then
 
-	#Install wget
+	#Install unzip
 	echo Installing unzip!;
 	sleep 1
 	apt install unzip -y
@@ -186,6 +186,7 @@ echo "Now we are going to download BRS 2.2.7"
 sleep 1
 
 mkdir /etc/burstcoin/brs/
+
 
 
 
