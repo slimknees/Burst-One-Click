@@ -19,7 +19,7 @@ clear
 
 #---------------------------------------------------------
 #ADD UNIVERSE REPO AND APT UPDATE 
-
+#---------------------------------------------------------
 echo Adding Universe Repo and Updating!;
 sleep 2
 
@@ -36,6 +36,7 @@ clear
 
 #---------------------------------------------------------
 #JAVA INSTALLATION SECTION
+#---------------------------------------------------------
 
 if [ ! -f $JAVADONE ]
 
@@ -62,6 +63,7 @@ fi
 
 #---------------------------------------------------------
 #MARIADB INSTALLATION SECTION
+#---------------------------------------------------------
 
 if [ ! -f $MARIADBDONE ]
 
@@ -97,6 +99,7 @@ clear
 
 #---------------------------------------------------------
 #SQL CONFIGURATION SECTION
+#---------------------------------------------------------
 
 if 
 	[ ! -f $SQLDONE ]; 
@@ -129,8 +132,9 @@ fi
 sleep 2
 
 
-#------------------------------------------------------
+#---------------------------------------------------------
 #INSTALL WGET SECTION
+#---------------------------------------------------------
 
 if [ ! -f $WGETDONE ]
 
@@ -154,8 +158,9 @@ else
 	clear
 fi
 
-#------------------------------------------------------
+#---------------------------------------------------------
 #INSTALL BRS SECTION
+#---------------------------------------------------------
 
 #install unzip
 if [ ! -f $UNZIPDONE ]
@@ -185,7 +190,33 @@ clear
 echo "Now we are going to download BRS 2.2.7"
 sleep 1
 
-mkdir /etc/burstcoin/brs/
+
+
+if [ ! -f $UNZIPDONE ]
+
+then
+
+	#Create Directory
+	mkdir /etc/burstcoin/brs/
+
+	#Download BRS - Comment out old versions
+	#wget https://github.com/burst-apps-team/burstcoin/archive/2.2.6.zip -P /etc/burstcoin/brs/
+	wget https://github.com/burst-apps-team/burstcoin/archive/2.2.7.zip -P /etc/burstcoin/brs/
+	touch $UNZIPDONE
+else
+
+	echo "BRS has already been downloaded"
+	echo "Moving to next section"
+	sleep 2
+fi
+
+#Unzip BRS package
+
+
+
+
+
+
 
 
 
