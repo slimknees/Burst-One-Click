@@ -6,7 +6,7 @@ SQLDONE="/var/log/sqldone.log"
 JAVADONE="/var/log/javadone.log"
 MARIADBDONE="/var/log/mariadbdone.log"
 WGETDONE="/var/log/wgetbdone.log"
-
+UNZIPDONE="/var/log/unzipbdone.log"
 
 
 clear
@@ -24,8 +24,8 @@ echo Adding Universe Repo and Updating!;
 sleep 2
 
 #Add Universe Repo to allow Java and MariaDB Install
-sudo add-apt-repository universe
-sudo apt-get update
+add-apt-repository universe
+apt-get update
 sleep 2
 clear
 
@@ -44,15 +44,15 @@ then
 	#Install Java
 	echo Installing Java!;
 	sleep 1
-	sudo apt install default-jdk -y
-	sudo touch $JAVADONE
+	apt install default-jdk -y
+	touch $JAVADONE
 	sleep 2
 	clear
 else
 
 	echo "Java has already been configured - checking to be sure."
 		{
-		sudo apt install default-jdk -y
+		apt install default-jdk -y
 		} &> /dev/null
 	echo "Moving to next section"
 	sleep 2
@@ -70,15 +70,15 @@ then
 	# Install MariaDB
 	echo Installing MariaDB!;
 	sleep 1
-	sudo apt install mariadb-server -y
-	sudo touch $MARIADBDONE
+	apt install mariadb-server -y
+	touch $MARIADBDONE
 	sleep 2
 	clear
 	
 else
 	echo "MariaDB has already been configured - Checking to be sure."
 		{
-		sudo apt install mariadb-server -y
+		apt install mariadb-server -y
 		} &> /dev/null
 	echo "Moving to next section"
 	sleep 2
@@ -118,7 +118,7 @@ then
 		mysql -e "DROP DATABASE test"
 		mysql -e "FLUSH PRIVILEGES"
 		mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-		sudo touch $SQLDONE
+		touch $SQLDONE
 	} &> /dev/null
 	echo "Done! Your mysql root password has been changed, and MySql installation has been secured."
 
@@ -139,15 +139,15 @@ then
 	#Install wget
 	echo Installing wget!;
 	sleep 1
-	sudo apt install wget -y
-	sudo touch $WGETDONE
+	apt install wget -y
+	touch $WGETDONE
 	sleep 2
 	clear
 else
 
 	echo "wget has already been installed - checking to be sure."
 		{
-		sudo apt install wget -y
+		apt install wget -y
 		} &> /dev/null
 	echo "Moving to next section"
 	sleep 2
@@ -155,14 +155,16 @@ else
 fi
 
 
-
-#------------------------------------------------------
-#INSTALL BRS SECTION
-
-
+#download and unzip most recent version of BRS from Burst-Team-Apps repo
 clear
 echo "Now we are going to download BRS 2.2.7"
 sleep 1
+
+mkdir /etc/burstcoin/brs/
+
+
+
+
 
 
 #Done
