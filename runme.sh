@@ -154,6 +154,31 @@ else
 	clear
 fi
 
+#------------------------------------------------------
+#INSTALL BRS SECTION
+
+#install unzip
+if [ ! -f $UNZIPDONE ]
+
+then
+
+	#Install wget
+	echo Installing unzip!;
+	sleep 1
+	apt install unzip -y
+	touch $UNZIPDONE
+	sleep 2
+	clear
+else
+
+	echo "unzip has already been installed - checking to be sure."
+		{
+		apt unzip unzip -y
+		} &> /dev/null
+	echo "Moving to next section"
+	sleep 2
+fi
+
 
 #download and unzip most recent version of BRS from Burst-Team-Apps repo
 clear
