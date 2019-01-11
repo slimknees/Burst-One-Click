@@ -4,10 +4,10 @@
 GREETING="Hello! This script has been configured to download all requirements for the BURSTCOIN wallet and will help you configure it to your liking!"
 SQLDONE="/var/log/sqldone.log"
 JAVADONE="/var/log/javadone.log"
-MARIADBDONE="/var/log/mariadbdone.log"
-WGETDONE="/var/log/wgetbdone.log"
-UNZIPDONE="/var/log/unzipbdone.log"
-
+MARIADBDONE="/var/log/mariaddone.log"
+WGETDONE="/var/log/wgetdone.log"
+UNZIPDONE="/var/log/unzipdone.log"
+DOWNLOADDONE="/var/log/downloaddone.log"
 
 clear
 #Say Hi
@@ -192,7 +192,7 @@ sleep 1
 
 
 
-if [ ! -f $UNZIPDONE ]
+if [ ! -f $DOWNLOADDONE ]
 
 then
 
@@ -206,7 +206,7 @@ then
 	#unzip etc/burstcoin/brs/2.2.6.zip /etc/burstcoin/brs/
 	unzip etc/burstcoin/brs/2.2.7.zip /etc/burstcoin/brs/
 	
-	touch $UNZIPDONE
+	touch $DOWNLOADDONE
 else
 
 	echo "BRS has already been downloaded and unpacked"
