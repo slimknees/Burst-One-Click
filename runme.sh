@@ -199,18 +199,23 @@ then
 	#Create Directory
 	mkdir /etc/burstcoin/brs/
 
-	#Download BRS - Comment out old versions
+	#Download and unpack BRS - Comment out old versions
 	#wget https://github.com/burst-apps-team/burstcoin/archive/2.2.6.zip -P /etc/burstcoin/brs/
 	wget https://github.com/burst-apps-team/burstcoin/archive/2.2.7.zip -P /etc/burstcoin/brs/
+	
+	#unzip etc/burstcoin/brs/2.2.6.zip /etc/burstcoin/brs/
+	unzip etc/burstcoin/brs/2.2.7.zip /etc/burstcoin/brs/
+	
 	touch $UNZIPDONE
 else
 
-	echo "BRS has already been downloaded"
+	echo "BRS has already been downloaded and unpacked"
 	echo "Moving to next section"
 	sleep 2
 fi
 
-#Unzip BRS package
+
+
 
 
 
